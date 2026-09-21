@@ -1,0 +1,53 @@
+[project]
+title = "Syphon Filter 2"
+region = "USA"
+revision = "serial-bound source; retail revision not separately labeled"
+track = "recompilation"
+intended_audience = "player"
+commercial_use_possible = false
+representative_level = "existing aggregate package startup; full gameplay not claimed"
+
+[retail_identity]
+disc_count = 2
+serials = ["SCUS-94451"]
+executable_paths = ["disc/SCUS_944.51"]
+executable_sha256 = "75a360bf7465dfdec85c14f9ba93862aae2531b48d83fd8d82ba8c9fffa13d33"
+load_address = "0x80010000"
+entry_point = "0x800F8598"
+
+[framework]
+name = "PSXRecomp"
+repository = "https://github.com/RetroPortingToolKit/psxrecomp"
+commit = "40ce47896026be52bcaae7de03b69766e0bd03e4"
+tree = "9b7d4a019a74b8f80e7b3376b1a8bef32535544e"
+recomp_ui_commit = "be8ac1d03ee19d55394b5a5f2d9d1506edd56659"
+license = "See the pinned dependency license; this binding does not approve commercial use."
+
+[release_binding]
+source_commit = "452cc0c06ec9fb93f28c5848960f7564c76a1ea8"
+title_version = "0.1.2"
+public_topology = "aggregate-kit-only"
+public_release = "v0.1.2-alpha"
+package_platform = "Windows x64"
+manual_test = "pending-new-exact-package"
+linux_qualification = "pending-exact-package-and-native-test"
+macos_qualification = "pending-exact-package-and-native-test"
+publication = "preparatory"
+retcomm_submission = "not-authorized"
+
+[limits]
+maximum_local_generated_gib = 20
+maximum_single_trace_gib = 8
+
+[paths]
+local_context = ".local-context"
+generated = "generated"
+captures = "out/captures"
+traces = "out/traces"
+packages = "dist"
+
+[release]
+supported_platforms = ["windows-x64", "linux-x64", "macos-arm64", "macos-x64"]
+graduation_state = "bootstrap_verified"
+platform_scope = "multi-platform"
+public_package_status = "not-published"

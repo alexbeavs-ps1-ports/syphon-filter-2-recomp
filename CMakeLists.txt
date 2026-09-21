@@ -29,7 +29,7 @@ psxrecomp_add_runtime_target(psx-runtime
     GAME_GENERATED_FULL_C ${SF2_GENERATED_FULL}
     GAME_GENERATED_DISPATCH_C "${SF2_GENERATED_DISPATCH}"
     WINDOW_TITLE "Syphon Filter 2 Recompiled"
-    EXE_NAME "SyphonFilter2Recompiled"
+    EXE_NAME "Syphon_Filter_2_Recompiled"
     GAME_VERSION "0.1.2-alpha"
     DEFAULT_GAME_CONFIG_PATH "game.toml"
     EXTRAS_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/src/sf2_mods.c"

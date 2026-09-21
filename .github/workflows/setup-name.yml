@@ -1,0 +1,28 @@
+name: Setup name
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  setup-name:
+    name: Setup executable name
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # The three files that declare the executable name must agree. A mismatch
+      # means the setup forwarder looks for a binary that CMake does not build.
+      - name: Verify setup executable name
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tests/test_setup_exe_name.py

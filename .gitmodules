@@ -1,0 +1,8 @@
+[submodule "psxrecomp"]
+	path = psxrecomp
+	url = https://github.com/Alexbeav/psxrecomp.git
+	branch = main
+[submodule "recomp-ui"]
+	path = recomp-ui
+	url = https://github.com/RetroPortingToolKit/recomp-ui.git
+	branch = master

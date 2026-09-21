@@ -1,0 +1,66 @@
+{
+  "format_version": 1,
+  "game": {
+    "name": "Syphon Filter 2",
+    "id": "SCUS-94451",
+    "boot_exe": "SCUS_944.51"
+  },
+  "marketing": {
+    "description": "Syphon Filter 2 recompiled for modern systems using psxrecomp.",
+    "publisher": "989 Studios",
+    "year": "2000",
+    "region": "USA",
+    "players": 2
+  },
+  "rom_identity": {
+    "cue_name": "Syphon Filter 2 (USA) (Disc 1).cue",
+    "bin_name": "Syphon Filter 2 (USA) (Disc 1).bin",
+    "disc_count": 2,
+    "track_counts": [1, 1],
+    "require_cue": true,
+    "data_track": {
+      "size": 732723264,
+      "md5": "10c32787ad95a64c1232b774943914d0",
+      "sha1": "5901886282b7d12a39853b9ca16b64344d6d555e",
+      "sha256": "e52dbc28b02046a14863863d51d92f95cbf2d9e9dd36bf91246f1ac0999a69e4"
+    },
+    "disc_fp": "60ea8d26240be51d0a3811f38c41b4e4208d3c6d6b33ceefa34a6916611bac0a",
+    "discs": [
+      {
+        "index": 1,
+        "serial": "SCUS-94451",
+        "cue_name": "Syphon Filter 2 (USA) (Disc 1).cue",
+        "bin_name": "Syphon Filter 2 (USA) (Disc 1).bin",
+        "size": 732723264,
+        "md5": "10c32787ad95a64c1232b774943914d0",
+        "sha1": "5901886282b7d12a39853b9ca16b64344d6d555e",
+        "sha256": "e52dbc28b02046a14863863d51d92f95cbf2d9e9dd36bf91246f1ac0999a69e4"
+      },
+      {
+        "index": 2,
+        "serial": "SCUS-94451",
+        "cue_name": "Syphon Filter 2 (USA) (Disc 2).cue",
+        "bin_name": "Syphon Filter 2 (USA) (Disc 2).bin",
+        "size": 737784768,
+        "md5": "e65e166ecfe76f63329addd9720737b6",
+        "sha1": "ebd4c83bf55e64f1241d8fbb4743bdd6820d5d5e",
+        "sha256": "673f9a41d4070952526555cccc83c0b5e6152d915c3b181c323df68dea70f06a"
+      }
+    ]
+  },
+  "exe": {
+    "load_address": "0x80010000",
+    "entry_pc": "0x800F8598",
+    "text_size": "0x001DC800",
+    "stack_base": "0x801FFFF0",
+    "sha256": "75a360bf7465dfdec85c14f9ba93862aae2531b48d83fd8d82ba8c9fffa13d33"
+  },
+  "warnings": [
+    "Multi-disc set; the boot executable is supplied by disc 1.",
+    "Disc 2 serial is recorded as the set serial; per-disc serials were not separately labeled by the source naming."
+  ],
+  "notes": [
+    "required_disc_fp is psxrecomp-toc-v1 (matches runtime DiscIdentity).",
+    "Derived from the owned Redump USA set; extraction and hashing recorded in corpus reports."
+  ]
+}

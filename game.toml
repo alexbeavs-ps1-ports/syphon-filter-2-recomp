@@ -1,70 +1,54 @@
+# Autofilled by tools/new_project_layout/probe_disc.py from your legal dump.
+# Review before shipping. Runtime quirks / overlay seeds still need hand work.
+
 [game]
 name = "Syphon Filter 2"
 id = "SCUS-94451"
-region = "USA"
-exe = "input/SCUS_944.51"
-disc = "input/Syphon Filter 2 (USA) (Disc 1).cue"
+players = 2
+exe = "disc/SCUS_944.51"
+disc = "disc/Syphon Filter 2 (USA) (Disc 1).cue"
 load_address = "0x80010000"
 entry_pc = "0x800F8598"
-text_size = "0x1DD000"
+text_size = "0x001DC800"
 stack_base = "0x801FFFF0"
 
+# Digests are for data Track 01 (first BINARY FILE / TRACK 01).
+[prepare_disc]
+out_dir = "disc"
+bin_name = "Syphon Filter 2 (USA) (Disc 1).bin"
+cue_name = "Syphon Filter 2 (USA) (Disc 1).cue"
+boot_exe = "SCUS_944.51"
+disc_count = 2
+known_sizes = [732723264]
+known_md5 = [
+  "10c32787ad95a64c1232b774943914d0",
+]
+known_sha1 = [
+  "5901886282b7d12a39853b9ca16b64344d6d555e",
+]
+
 [recompiler]
-seeds = "seeds/functions.txt"
-bios_config = "psxrecomp-src/bios/OpenBIOS.toml"
-strict = true
+seeds = "seeds/ghidra_funcs.txt"
 out_dir = "generated"
+bios_config = "psxrecomp/bios/SCPH1001.toml"
+strict = true
 
 [runtime]
 window_title = "Syphon Filter 2 Recompiled"
 memcard_dir = "saves"
 bios_hle = false
-fast_boot = true
-overlay_cache = true
+openbios = false
 
 [video]
 renderer = "opengl"
-supersampling = 4
-antialiasing = true
-texture_filtering = "nearest"
 aspect_ratio = "4:3"
-pgxp = false
 
 [controller]
 default_mode = "digital"
-mouse_pad = false
 
-[controller.mouse_camera]
-enabled = false
-facing_site = "0x80053464"
-facing_expected = "0x8EA30034"
-application_state_addr = "0x8011EE90"
-player_pointer_addr = "0x8012A574"
-player_state_offset = "0x20"
-wrapper_offset = "0xE0"
-base_offset = "0xA4"
-owner_offset = "0xDC"
-desired_pitch_offset = "0x8E8"
-rendered_pitch_offset = "0x918"
-vector_x_offset = "0xCC"
-vector_y_offset = "0xD0"
-vector_z_offset = "0xD4"
-controller_reg = 18
-chase_yaw_sensitivity = 0.75
-chase_pitch_sensitivity = 1.0
-aim_yaw_sensitivity = 1.0
-aim_pitch_sensitivity = 1.0
-invert_y = false
-
-[widescreen]
-offer = false
-native_wide = true
-gte_game_mode = true
-nw_phase_backdrop = false
-nw_full_mirror = true
-nw_guest_projection = true
-nw_world_min_polygons = 64
-
-[widescreen.cull]
-auto_screen_x = true
-screen_h_imms = ["0xE0", "0xF0", "0xF1"]
+# Online mount gate: digests + track count + optional TOC fingerprint
+# (see docs/NETPLAY.md).
+[netplay]
+require_cue = true
+required_tracks = 1
+required_disc_fp = "60ea8d26240be51d0a3811f38c41b4e4208d3c6d6b33ceefa34a6916611bac0a"
