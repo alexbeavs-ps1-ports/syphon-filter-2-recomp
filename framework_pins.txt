@@ -2,3 +2,16 @@ psxrecomp=40ce478 (40ce47896026be52bcaae7de03b69766e0bd03e4)
 recomp-ui=be8ac1d (be8ac1d03ee19d55394b5a5f2d9d1506edd56659)
 recomp-net=268e74f (268e74fe718b38fe38643c358588bbc1e0f0af70)
 retcomm-rbengine=ebd94a4 (ebd94a4729abe2c0615070cef3ffe05b3f9ebf28)
+
+# Provisional rebuild target -- NOT integrated, built, or tested.
+# Wave 5 selected runtime pin, recorded 2026-09-19; branch wave5/base-candidate
+# on Alexbeav/psxrecomp (also resolves under RetroPortingToolKit/psxrecomp).
+# Authorized for interim private builds only; not a cleared public-release pin.
+# It is recorded here so the selection is not lost. Do not relabel the
+# framework identity above, and do not change the release binding in
+# release/SETUP.ps1, until this dependency set is integrated together with its
+# tree and UI pins and passes the comparison and acceptance the replacement
+# decision requires.
+# No SHA-256 is held for this archive. Mint it from the exact verified artifact
+# bytes, and preserve that artifact, before wiring it into any download route.
+#proposed-rebuild psxrecomp=f4751d00 (f4751d005ee69b26a69f8fe0d7a58807f16b46c1)
