@@ -17,6 +17,8 @@ strict = true
 out_dir = "generated"
 
 [runtime]
+# SF2 installs overlays into its EXE text window with CPU stores.
+cpu_text_overlay_capture = true
 window_title = "Syphon Filter 2 Recompiled"
 memcard_dir = "saves"
 bios_hle = false

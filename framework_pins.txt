@@ -1,10 +1,10 @@
-psxrecomp=90a645e6 (90a645e69773b8698d930cef9806ce5cb00ba318)
+psxrecomp=bf934034 (bf934034b6180d38d8624f3bc91dc56f83fc67d8)
 recomp-ui=ff92028 (ff92028ec86e30503694c70c532b93b8198663aa)
 recomp-net=859ba28 (859ba28b93f7374f2ac1eb70d2171594c5cd4f4b)
 retcomm-rbengine=a7b9850 (a7b98507a62fe00e5aec3b90c52a4134f3c174bc)
 
 # Integrated 2026-09-23: branch codex/t200-sf2-consolidated on Alexbeav/psxrecomp
 # = Wave 5 baseline f4751d00 + SF2 feature branch 452cc0c + CD read-cursor fix
-# 1bf280ca + native-wide quad fix 38ac27cd + test-only fix 90a645e6. Built as the owned-input kit and
+# 1bf280ca + native-wide quad fix 38ac27cd + merge-regression fixes 8f4ce731 + per-game text capture switch bf934034. Built as the owned-input kit and
 # played: native widescreen confirmed. Archive SHA-256 is in release/SETUP.ps1.
 # Supersedes the provisional f4751d00 rebuild target.
