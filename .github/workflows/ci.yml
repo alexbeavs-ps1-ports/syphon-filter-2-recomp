@@ -10,7 +10,7 @@ permissions:
   contents: read
 
 env:
-  PSXRECOMP_REF: 37072e8fad54d3813ae5a3d8800d67eb16221009
+  PSXRECOMP_REF: 02d644d0d21671541acc104e7674cd50bb92cbb0
 
 jobs:
   public-source-policy:
@@ -33,6 +33,9 @@ jobs:
           ref: ${{ env.PSXRECOMP_REF }}
           path: psxrecomp-framework
           submodules: recursive
+          # Full history: the framework's TAS tooling tests resolve pinned
+          # revisions (tas_qualified_hunks, tas_build_cache).
+          fetch-depth: 0
       - name: Install MinGW toolchain
         uses: msys2/setup-msys2@v2
         with:
