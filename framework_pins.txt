@@ -1,17 +1,10 @@
-psxrecomp=40ce478 (40ce47896026be52bcaae7de03b69766e0bd03e4)
-recomp-ui=be8ac1d (be8ac1d03ee19d55394b5a5f2d9d1506edd56659)
-recomp-net=268e74f (268e74fe718b38fe38643c358588bbc1e0f0af70)
-retcomm-rbengine=ebd94a4 (ebd94a4729abe2c0615070cef3ffe05b3f9ebf28)
+psxrecomp=38ac27cd (38ac27cd1dc327b7700371cc5b73c5e188e2b8a8)
+recomp-ui=ff92028 (ff92028ec86e30503694c70c532b93b8198663aa)
+recomp-net=859ba28 (859ba28b93f7374f2ac1eb70d2171594c5cd4f4b)
+retcomm-rbengine=a7b9850 (a7b98507a62fe00e5aec3b90c52a4134f3c174bc)
 
-# Provisional rebuild target -- NOT integrated, built, or tested.
-# Wave 5 selected runtime pin, recorded 2026-09-19; branch wave5/base-candidate
-# on Alexbeav/psxrecomp (also resolves under RetroPortingToolKit/psxrecomp).
-# Authorized for interim private builds only; not a cleared public-release pin.
-# It is recorded here so the selection is not lost. Do not relabel the
-# framework identity above, and do not change the release binding in
-# release/SETUP.ps1, until this dependency set is integrated together with its
-# tree and UI pins and passes the comparison and acceptance the replacement
-# decision requires.
-# No SHA-256 is held for this archive. Mint it from the exact verified artifact
-# bytes, and preserve that artifact, before wiring it into any download route.
-#proposed-rebuild psxrecomp=f4751d00 (f4751d005ee69b26a69f8fe0d7a58807f16b46c1)
+# Integrated 2026-09-23: branch codex/t200-sf2-consolidated on Alexbeav/psxrecomp
+# = Wave 5 baseline f4751d00 + SF2 feature branch 452cc0c + CD read-cursor fix
+# 1bf280ca + native-wide quad fix 38ac27cd. Built as the owned-input kit and
+# played: native widescreen confirmed. Archive SHA-256 is in release/SETUP.ps1.
+# Supersedes the provisional f4751d00 rebuild target.

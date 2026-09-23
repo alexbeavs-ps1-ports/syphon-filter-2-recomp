@@ -24,6 +24,11 @@ def main() -> int:
             r'\bEXE_NAME\s+"([^"]+)"',
             "EXE_NAME",
         ),
+        "release setup": extract(
+            ROOT / "release" / "SETUP.ps1",
+            r'\$Exe = Join-Path \$BuildDir "([^"]+)\.exe"',
+            "release setup Exe",
+        ),
         "setup forwarder": extract(
             ROOT / "codegen_setup.c",
             r'\.exe_basename\s*=\s*"([^"]+)"',

@@ -281,12 +281,17 @@ class ReleaseAuditTests(unittest.TestCase):
 
             fixtures = {
                 "FRAMEWORK": (
-                    "psxrecomp-452cc0c06ec9fb93f28c5848960f7564c76a1ea8",
+                    "psxrecomp-38ac27cd1dc327b7700371cc5b73c5e188e2b8a8",
                     ("runtime/runtime.cmake", "bios/OpenBIOS.toml", "LICENSE"),
                 ),
                 "RECOMP_UI": (
-                    "recomp-ui-514c9e29f6d043867cea2fe91ca3cca24c69477e",
+                    "recomp-ui-ff92028ec86e30503694c70c532b93b8198663aa",
                     ("recomp_ui.cmake", "src/recomp_launcher.h", "README.md"),
+                ),
+                "RBENGINE": (
+                    "rbengine-a7b98507a62fe00e5aec3b90c52a4134f3c174bc",
+                    ("CMakeLists.txt", "src/snap/rbe_snap_ring.c",
+                     "include/retcomm_rbengine/snap_ring.h"),
                 ),
                 "SDL3": (
                     "SDL3-3.4.10",

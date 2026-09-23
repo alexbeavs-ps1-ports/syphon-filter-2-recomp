@@ -14,15 +14,20 @@ $ErrorActionPreference = "Stop"
 $env:PYTHONUTF8 = "1"
 $Kit = $PSScriptRoot
 $Framework = Join-Path $Kit "psxrecomp-src"
-$FrameworkRef = "452cc0c06ec9fb93f28c5848960f7564c76a1ea8"
+$FrameworkRef = "38ac27cd1dc327b7700371cc5b73c5e188e2b8a8"
 $FrameworkArchiveName = "psxrecomp-$FrameworkRef.zip"
 $FrameworkUrl = "https://github.com/Alexbeav/psxrecomp/archive/$FrameworkRef.zip"
-$FrameworkSha256 = "87ce5cff803f6e5bcf0a5efb3720bf98e4fbb718c5d55b903a2425de0cd8d1c2"
+$FrameworkSha256 = "8a2c6ded7ee0335e6fbbb82c780b4d7a253f72dbf0bce1183463b18c230ae715"
 $RecompUi = Join-Path $Kit "recomp-ui"
-$RecompUiRef = "514c9e29f6d043867cea2fe91ca3cca24c69477e"
+$RecompUiRef = "ff92028ec86e30503694c70c532b93b8198663aa"
 $RecompUiArchiveName = "recomp-ui-$RecompUiRef.zip"
 $RecompUiUrl = "https://github.com/Alexbeav/recomp-ui/archive/$RecompUiRef.zip"
-$RecompUiSha256 = "1bb283d579c3553028fec28202258aae24a43b429bfb8aca6ad854702ba3826a"
+$RecompUiSha256 = "b15b1899b0d42c61880e154298dfc48d3707e398b5e73b3e06832514be8d13f6"
+$RbengineRef = "a7b98507a62fe00e5aec3b90c52a4134f3c174bc"
+$RbengineArchiveName = "rbengine-$RbengineRef.zip"
+$RbengineUrl = "https://github.com/RetroPortingToolKit/rbengine/archive/$RbengineRef.zip"
+$RbengineSha256 = "3ccb6cb7e22b87313eaa79cb38b1763f24a2967b4e5036a0946a31d05653e7b7"
+$RbengineDir = Join-Path $Framework "lib\retcomm-rbengine"
 $InputDir = Join-Path $Kit "input"
 $GeneratedDir = Join-Path $Kit "generated"
 $BuildDir = Join-Path $Kit "out\release"
@@ -360,6 +365,11 @@ function Install-PinnedSources {
     Install-VerifiedArtifact "SDL3" "SDL $SdlVersion source" $SdlUrl $SdlSha256 `
         $SdlArchiveName $SdlRoot "SDL3-$SdlVersion" `
         @("CMakeLists.txt", "include\SDL3\SDL.h", "LICENSE.txt")
+    # retcomm-rbengine is a psxrecomp submodule, so the framework archive
+    # carries an empty lib\retcomm-rbengine. Rewind needs its snap-ring source.
+    Install-VerifiedArtifact "RBENGINE" "retcomm-rbengine source $RbengineRef" $RbengineUrl $RbengineSha256 `
+        $RbengineArchiveName $RbengineDir "rbengine-$RbengineRef" `
+        @("CMakeLists.txt", "src\snap\rbe_snap_ring.c", "include\retcomm_rbengine\snap_ring.h")
 }
 
 function Invoke-Python {
@@ -644,7 +654,7 @@ New-Item -ItemType Directory -Force $BuildSaves | Out-Null
 Copy-Item -LiteralPath (Join-Path $Kit "settings.toml") -Destination $BuildDir -Force
 Copy-Item -LiteralPath (Join-Path $Kit "keybinds.ini") -Destination $BuildDir -Force
 
-$Exe = Join-Path $BuildDir "SyphonFilter2Recompiled.exe"
+$Exe = Join-Path $BuildDir "Syphon_Filter_2_Recompiled.exe"
 if (-not (Test-Path -LiteralPath $Exe -PathType Leaf)) {
     throw "built runtime not found: $Exe"
 }
@@ -656,7 +666,8 @@ $LauncherText = @"
 set "PSX_OVERLAY_AUTOCOMPILE_OFF=1"
 set "PSX_NATIVE_RANK_LIMIT=0"
 cd /d "$BuildDir"
-start "Syphon Filter 2 Recompiled" "$Exe" --game "$Config" --disc "$Cue" --memcard-dir "$BuildSaves" --launcher
+rem call, not start: start splits a quoted disc path that contains spaces.
+call "$Exe" "--game" "$Config" "--disc" "$Cue" "--memcard-dir" "$BuildSaves" "--launcher"
 "@
 $LauncherText = ($LauncherText -replace "`r?`n", "`r`n")
 [IO.File]::WriteAllText($Launcher, $LauncherText, [Text.Encoding]::ASCII)
