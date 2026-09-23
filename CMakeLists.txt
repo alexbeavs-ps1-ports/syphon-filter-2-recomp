@@ -17,6 +17,10 @@ set(CMAKE_CXX_STANDARD 17)
 # Game code and the BIOS backend are generated on the player's machine (setup
 # wizard or RetComM) from their own disc and a legal SCPH-1001 BIOS dump;
 # neither exists in Git or CI.
+# Real-BIOS title: only the SCPH-1001 backend is built. This must match the
+# package wrapper's --omit-openbios, or the runtime asks for a bundled OpenBIOS
+# image the package does not ship.
+set(PSXRECOMP_BIOS_STEMS "SCPH1001" CACHE STRING "" FORCE)
 set(PSX_SETUP_WIZARD ON CACHE BOOL
     "Advertise first-run setup wizard + Generate & rebuild in recomp-ui" FORCE)
 include("${PSXRECOMP_ROOT}/runtime/runtime.cmake")
