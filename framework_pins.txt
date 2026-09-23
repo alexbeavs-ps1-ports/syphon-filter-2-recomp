@@ -1,5 +1,5 @@
 psxrecomp=bf934034 (bf934034b6180d38d8624f3bc91dc56f83fc67d8)
-recomp-ui=cbc861d (cbc861d1312af281d32c9ec7bc5265a1bc57da8f)
+recomp-ui=8cf5b08 (8cf5b08a8711405127612bb40dbc48a09bc30b92)
 recomp-net=859ba28 (859ba28b93f7374f2ac1eb70d2171594c5cd4f4b)
 retcomm-rbengine=a7b9850 (a7b98507a62fe00e5aec3b90c52a4134f3c174bc)
 
@@ -8,6 +8,7 @@ retcomm-rbengine=a7b9850 (a7b98507a62fe00e5aec3b90c52a4134f3c174bc)
 # 1bf280ca + native-wide quad fix 38ac27cd + merge-regression fixes 8f4ce731 + per-game text capture switch bf934034. Built as the owned-input kit and
 # played: native widescreen confirmed. Archive SHA-256 is in release/SETUP.ps1.
 # Supersedes the provisional f4751d00 rebuild target.
-# recomp-ui cbc861d (Alexbeav/recomp-ui, controls-dual-bind-ff92028) = upstream ff92028
-# + visible primary/alternate PSX keyboard binds and right-click clear; proposed
+# recomp-ui 8cf5b08 (Alexbeav/recomp-ui, controls-dual-bind-ff92028) = upstream ff92028
+# + visible primary/alternate PSX keyboard binds, right-click clear, and
+# duplicate binds allowed + highlighted; proposed
 # upstream as RetroPortingToolKit/recomp-ui#61.
