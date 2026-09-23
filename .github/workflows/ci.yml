@@ -10,7 +10,7 @@ permissions:
   contents: read
 
 env:
-  PSXRECOMP_REF: 02d644d0d21671541acc104e7674cd50bb92cbb0
+  PSXRECOMP_REF: 8553dbb86b723feee8c3d7ee633dc01e267260d0
 
 jobs:
   public-source-policy:
