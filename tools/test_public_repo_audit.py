@@ -281,7 +281,7 @@ class ReleaseAuditTests(unittest.TestCase):
 
             fixtures = {
                 "FRAMEWORK": (
-                    "psxrecomp-38ac27cd1dc327b7700371cc5b73c5e188e2b8a8",
+                    "psxrecomp-90a645e69773b8698d930cef9806ce5cb00ba318",
                     ("runtime/runtime.cmake", "bios/OpenBIOS.toml", "LICENSE"),
                 ),
                 "RECOMP_UI": (
