@@ -285,7 +285,7 @@ class ReleaseAuditTests(unittest.TestCase):
                     ("runtime/runtime.cmake", "bios/OpenBIOS.toml", "LICENSE"),
                 ),
                 "RECOMP_UI": (
-                    "recomp-ui-ff92028ec86e30503694c70c532b93b8198663aa",
+                    "recomp-ui-cbc861d1312af281d32c9ec7bc5265a1bc57da8f",
                     ("recomp_ui.cmake", "src/recomp_launcher.h", "README.md"),
                 ),
                 "RBENGINE": (
