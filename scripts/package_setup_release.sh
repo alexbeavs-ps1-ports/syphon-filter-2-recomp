@@ -26,6 +26,12 @@ fi
 chmod +x "${PACKAGER}" 2>/dev/null || true
 
 EXTRA_PROJECT=()
+# Game-owned C that CMakeLists.txt compiles into the runtime (SF2 mod
+# activation plugins, src/sf2_mods.c). Without it the shipped CMakeLists
+# references a file the zip does not contain.
+if [[ -d "${ROOT}/src" ]]; then
+  EXTRA_PROJECT+=(--project-dir src)
+fi
 if [[ -f "${ROOT}/catalog_identity.json" ]]; then
   EXTRA_PROJECT+=(--project-file catalog_identity.json)
 fi
