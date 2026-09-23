@@ -1,40 +1,51 @@
 cmake_minimum_required(VERSION 3.20)
-project(SyphonFilter2Recompiled C CXX)
+set(PSXRECOMP_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/psxrecomp" CACHE PATH
+    "Path to the pinned PSXRecomp framework")
+if(NOT EXISTS "${PSXRECOMP_ROOT}/runtime/runtime.cmake")
+    message(FATAL_ERROR
+        "PSXRecomp runtime is missing: ${PSXRECOMP_ROOT}/runtime/runtime.cmake\n"
+        "This project expects the psxrecomp framework checkout at ${PSXRECOMP_ROOT}.\n"
+        "Run: git submodule update --init --recursive\n"
+        "If psxrecomp/ is not a submodule, set -DPSXRECOMP_ROOT=<path-to-psxrecomp>.")
+endif()
+
+project(SyphonFilter2Recompiled LANGUAGES C CXX)
 
 set(CMAKE_C_STANDARD 99)
 set(CMAKE_CXX_STANDARD 17)
-set(PSXRECOMP_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/psxrecomp" CACHE PATH
-    "Path to the pinned PSXRecomp framework")
 
-# The owned-input setup kit regenerates the MIT-licensed OpenBIOS backend and
-# game code locally. Neither generated source set exists in Git or in CI.
-set(PSX_RECOMP_UI ON CACHE BOOL "" FORCE)
-set(PSXRECOMP_BIOS_STEMS "OpenBIOS" CACHE STRING "" FORCE)
+# Game code and the BIOS backend are generated on the player's machine (setup
+# wizard or RetComM) from their own disc and a legal SCPH-1001 BIOS dump;
+# neither exists in Git or CI.
+set(PSX_SETUP_WIZARD ON CACHE BOOL
+    "Advertise first-run setup wizard + Generate & rebuild in recomp-ui" FORCE)
 include("${PSXRECOMP_ROOT}/runtime/runtime.cmake")
 
-file(GLOB SF2_GENERATED_FULL CONFIGURE_DEPENDS
-    "${CMAKE_CURRENT_SOURCE_DIR}/generated/SCUS_944.51_full.c"
-    "${CMAKE_CURRENT_SOURCE_DIR}/generated/SCUS_944.51_full_*.c")
-set(SF2_GENERATED_DISPATCH
-    "${CMAKE_CURRENT_SOURCE_DIR}/generated/SCUS_944.51_dispatch.c")
-
-if(NOT SF2_GENERATED_FULL)
-    # Keep CMake configuration intelligible before local regeneration. The
-    # framework's generated-source guard provides the actionable build error.
-    set(SF2_GENERATED_FULL
-        "${CMAKE_CURRENT_SOURCE_DIR}/generated/SCUS_944.51_full.c")
-endif()
-
-psxrecomp_add_runtime_target(psx-runtime
-    GAME_GENERATED_FULL_C ${SF2_GENERATED_FULL}
-    GAME_GENERATED_DISPATCH_C "${SF2_GENERATED_DISPATCH}"
+psxrecomp_add_game_runtime(psx-runtime
+    ENABLE_SETUP_WIZARD
     WINDOW_TITLE "Syphon Filter 2 Recompiled"
     EXE_NAME "Syphon_Filter_2_Recompiled"
-    GAME_VERSION "0.1.2-alpha"
     DEFAULT_GAME_CONFIG_PATH "game.toml"
+    MAX_PLAYERS 2
+    GEN_MARKER "generated/SCUS_944.51_dispatch.c"
+    GEN_FULL_GLOB "generated/SCUS_944.51_full_*.c"
+    CODEGEN_SETUP_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/codegen_setup.c"
+    # SF2's trusted mod activation plugins (Mouse Look, Widescreen, PGXP).
     EXTRAS_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/src/sf2_mods.c"
 )
 
+# Stage runtime configs and the built-in mod catalog next to the exe for direct
+# build/ launches. Only copy files that exist.
+foreach(_PSX_RUNTIME_CONFIG game.toml game_options.toml)
+    if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/${_PSX_RUNTIME_CONFIG}")
+        add_custom_command(TARGET psx-runtime POST_BUILD
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                "${CMAKE_CURRENT_SOURCE_DIR}/${_PSX_RUNTIME_CONFIG}"
+                "$<TARGET_FILE_DIR:psx-runtime>/${_PSX_RUNTIME_CONFIG}"
+            COMMENT "Staging ${_PSX_RUNTIME_CONFIG}"
+            VERBATIM)
+    endif()
+endforeach()
 add_custom_command(TARGET psx-runtime POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_directory
         "${CMAKE_CURRENT_SOURCE_DIR}/mods"

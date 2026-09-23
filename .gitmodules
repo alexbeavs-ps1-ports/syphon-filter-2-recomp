@@ -1,8 +1,8 @@
 [submodule "psxrecomp"]
 	path = psxrecomp
 	url = https://github.com/Alexbeav/psxrecomp.git
-	branch = main
+	branch = codex/t200-sf2-consolidated
 [submodule "recomp-ui"]
 	path = recomp-ui
-	url = https://github.com/RetroPortingToolKit/recomp-ui.git
-	branch = master
+	url = https://github.com/Alexbeav/recomp-ui.git
+	branch = controls-dual-bind-ff92028
