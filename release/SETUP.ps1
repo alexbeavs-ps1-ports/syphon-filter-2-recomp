@@ -13,7 +13,7 @@ param(
 $ErrorActionPreference = "Stop"
 $env:PYTHONUTF8 = "1"
 $Kit = $PSScriptRoot
-$Framework = Join-Path $Kit "psxrecomp-src"
+$Framework = Join-Path $Kit "psxrecomp"
 $FrameworkRef = "bf934034b6180d38d8624f3bc91dc56f83fc67d8"
 $FrameworkArchiveName = "psxrecomp-$FrameworkRef.zip"
 $FrameworkUrl = "https://github.com/Alexbeav/psxrecomp/archive/$FrameworkRef.zip"

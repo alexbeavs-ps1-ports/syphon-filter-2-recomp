@@ -322,11 +322,11 @@ class ReleaseAuditTests(unittest.TestCase):
             self.assertEqual(result.returncode, 0, result.stdout)
             self.assertIn("Pinned dependency closure is ready", result.stdout)
             self.assertNotIn("git clone", result.stdout.lower())
-            self.assertTrue((root / "psxrecomp-src" / ".sf2-artifact-sha256").is_file())
+            self.assertTrue((root / "psxrecomp" / ".sf2-artifact-sha256").is_file())
             self.assertTrue((root / "recomp-ui" / ".sf2-artifact-sha256").is_file())
             self.assertTrue((root / "toolchain" / "SDL3-3.4.10" /
                              ".sf2-artifact-sha256").is_file())
-            repaired = root / "psxrecomp-src" / "runtime" / "runtime.cmake"
+            repaired = root / "psxrecomp" / "runtime" / "runtime.cmake"
             self.assertLessEqual(repaired.stat().st_mtime, datetime.datetime.now().timestamp() + 2)
             self.assertIn("future-dated build files", result.stdout)
 

@@ -112,7 +112,7 @@ PSXRecomp is PolyForm Noncommercial 1.0.0; see `LICENSE-psxrecomp` and
 `THIRD_PARTY_ATTRIBUTION.md`. This kit is for noncommercial research and
 private play with legally obtained inputs.
 
-Never redistribute the extracted `input/`, `generated/`, `psxrecomp-src/`,
+Never redistribute the extracted `input/`, `generated/`, `psxrecomp/`,
 `out/`, `play.bat`, memory cards, `overlay_captures.json`, or any package made
 after running setup. Those local outputs may contain retail-derived code or
 private paths.

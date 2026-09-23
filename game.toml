@@ -12,7 +12,7 @@ stack_base = "0x801FFFF0"
 
 [recompiler]
 seeds = "seeds/functions.txt"
-bios_config = "psxrecomp-src/bios/OpenBIOS.toml"
+bios_config = "psxrecomp/bios/OpenBIOS.toml"
 strict = true
 out_dir = "generated"
 
