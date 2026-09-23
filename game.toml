@@ -4,7 +4,6 @@ name = "Syphon Filter 2"
 id = "SCUS-94451"
 region = "USA"
 exe = "input/SCUS_944.51"
-disc = "input/Syphon Filter 2 (USA) (Disc 1).cue"
 # Two-disc set: the setup wizard asks for both discs and records the located
 # paths here; the runtime builds its disc-swap roster from this list.
 discs = [
