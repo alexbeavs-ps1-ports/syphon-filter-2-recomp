@@ -5,6 +5,13 @@ id = "SCUS-94451"
 region = "USA"
 exe = "input/SCUS_944.51"
 disc = "input/Syphon Filter 2 (USA) (Disc 1).cue"
+# Two-disc set: the setup wizard asks for both discs and records the located
+# paths here; the runtime builds its disc-swap roster from this list.
+discs = [
+    "disc/Syphon Filter 2 (USA) (Disc 1).cue",
+    "disc/Syphon Filter 2 (USA) (Disc 2).cue",
+]
+disc_serials = ["SCUS-94451", "SCUS-94492"]
 load_address = "0x80010000"
 entry_pc = "0x800F8598"
 text_size = "0x1DD000"

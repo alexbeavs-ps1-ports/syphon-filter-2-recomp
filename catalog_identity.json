@@ -38,7 +38,7 @@
       },
       {
         "index": 2,
-        "serial": "SCUS-94451",
+        "serial": "SCUS-94492",
         "cue_name": "Syphon Filter 2 (USA) (Disc 2).cue",
         "bin_name": "Syphon Filter 2 (USA) (Disc 2).bin",
         "size": 737784768,
@@ -56,8 +56,7 @@
     "sha256": "75a360bf7465dfdec85c14f9ba93862aae2531b48d83fd8d82ba8c9fffa13d33"
   },
   "warnings": [
-    "Multi-disc set; the boot executable is supplied by disc 1.",
-    "Disc 2 serial is recorded as the set serial; per-disc serials were not separately labeled by the source naming."
+    "Multi-disc set; the boot executable is supplied by disc 1."
   ],
   "notes": [
     "required_disc_fp is psxrecomp-toc-v1 (matches runtime DiscIdentity).",
