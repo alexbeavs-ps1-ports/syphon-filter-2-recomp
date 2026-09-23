@@ -137,7 +137,7 @@ no retail bytes or private paths.
 ## Building from source
 
 The release kit is the supported build route. Its setup script pins framework
-commit `e5a020acbbc8edf4ff135702928b8ede771ab6bf`, extracts and verifies
+commit `35b45d716eafd68964c05d0b278e8c6c158f6786`, extracts and verifies
 `SCUS_944.51` (SHA-256
 `75a360bf7465dfdec85c14f9ba93862aae2531b48d83fd8d82ba8c9fffa13d33`),
 regenerates the BIOS and game backends, and builds with MinGW/Ninja.
