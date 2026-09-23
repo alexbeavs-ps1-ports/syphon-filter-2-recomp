@@ -10,7 +10,7 @@ permissions:
   contents: read
 
 env:
-  PSXRECOMP_REF: bf934034b6180d38d8624f3bc91dc56f83fc67d8
+  PSXRECOMP_REF: 37072e8fad54d3813ae5a3d8800d67eb16221009
 
 jobs:
   public-source-policy:
@@ -36,13 +36,18 @@ jobs:
       - name: Install MinGW toolchain
         uses: msys2/setup-msys2@v2
         with:
-          msystem: MINGW64
+          # UCRT64 matches every real build of this game (WinLibs UCRT kit,
+          # RetComM llvm-mingw UCRT) and the framework's own tasreplays CI;
+          # MINGW64's msvcrt lacks C11 fopen "x" mode. git is required by the
+          # framework's TAS tooling tests.
+          msystem: UCRT64
           update: true
           install: >-
-            mingw-w64-x86_64-gcc
-            mingw-w64-x86_64-cmake
-            mingw-w64-x86_64-ninja
-            mingw-w64-x86_64-python
+            git
+            mingw-w64-ucrt-x86_64-gcc
+            mingw-w64-ucrt-x86_64-cmake
+            mingw-w64-ucrt-x86_64-ninja
+            mingw-w64-ucrt-x86_64-python
       - name: Build pinned PSXRecomp CLI
         shell: msys2 {0}
         run: cd psxrecomp-framework && python tools/build_cli.py release
