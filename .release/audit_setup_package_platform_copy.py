@@ -93,7 +93,7 @@ def audit(path: Path) -> dict[str, object]:
             host_copy,
             (
                 "Download latest portable toolchain",
-                "Select toolchain zip",
+                "toolchain zip",  # recomp-ui 286bca5: "Select cmake-clang-v1 toolchain zip"
                 "cmake-clang-v1",
             ),
             "Windows setup host",
