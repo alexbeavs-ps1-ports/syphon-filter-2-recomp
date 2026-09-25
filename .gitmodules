@@ -1,7 +1,7 @@
 [submodule "psxrecomp"]
 	path = psxrecomp
 	url = https://github.com/Alexbeav/psxrecomp.git
-	branch = codex/t200-sf2-consolidated
+	branch = claude/ps1b-118-chd-roster
 [submodule "recomp-ui"]
 	path = recomp-ui
 	url = https://github.com/Alexbeav/recomp-ui.git
