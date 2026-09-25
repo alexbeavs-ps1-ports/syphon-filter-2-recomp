@@ -21,7 +21,7 @@ repository = "https://github.com/Alexbeav/psxrecomp"
 branch = "codex/t200-sf2-consolidated"
 commit = "6bef1b1cb458b1499292d359db80708282c75265"
 tree = "b57cdf3968bf58143d05e7ef15c90560ac5501cc"
-recomp_ui_commit = "e505fcf4c0ba043ba538087c0e36928fcaa96ad3"
+recomp_ui_commit = "adf027359486ac0d70267c9c475344583f16c13d"
 archive_sha256 = "0c7339e9e6a759392b8a11da8e97e93a8a321d1fe18fefad4f65044deeed17db"
 license = "See the pinned dependency license; this binding does not approve commercial use."
 
